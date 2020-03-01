@@ -50,7 +50,7 @@ public class FieldTest {
     @Test
     public void getFigureWhenXMoreThanFieldSize() {
         final Field field = new Field();
-        final Point wrongXPoint = new Point(field.getSize() + 1, 1);
+        final Point wrongXPoint = new Point(field.getSize(), 1);
         try {
             field.getFigure(wrongXPoint);
             fail();
@@ -74,7 +74,7 @@ public class FieldTest {
     @Test
     public void getFigureWhenYMoreThanFieldSize() {
         final Field field = new Field();
-        final Point wrongYPoint = new Point(1, field.getSize() + 1);
+        final Point wrongYPoint = new Point(1, field.getSize());
         try {
             field.getFigure(wrongYPoint);
             fail();
@@ -82,18 +82,17 @@ public class FieldTest {
             System.out.println("Y is more than field size");
         }
     }
-
-    @Test
-    public void setFigureWhenPointAlreadyOccupied() throws Exception {
-        final Field field = new Field();
-        final Point point = new Point(1,1);
-        final Figure figure = Figure.X;
-        field.setFigure(point, figure);
-        try {
-            field.setFigure(point, Figure.O);
-            fail();
-        } catch (AlreadyOccupiedException e) {
-            System.out.printf("point X%d, Y%d is already occupied \n", point.x, point.y);
-        }
-    }
+//    @Test
+//    public void setFigureWhenPointAlreadyOccupied() throws Exception {
+//        final Field field = new Field();
+//        final Point point = new Point(1,1);
+//        final Figure figure = Figure.X;
+//        field.setFigure(point, figure);
+//        try {
+//            field.setFigure(point, Figure.O);
+//            fail();
+//        } catch (AlreadyOccupiedException e) {
+//            System.out.printf("point X%d, Y%d is already occupied \n", point.x, point.y);
+//        }
+//    }
 }
