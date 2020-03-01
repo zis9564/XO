@@ -4,12 +4,18 @@ import zis.model.exceptions.InvalidPointException;
 import java.awt.*;
 
 public class Field {
-    private static final int FIELDSIZE = 3;
     private static final int MINCOORDINATE = 0;
-    private final Figure[][] field = new Figure[FIELDSIZE][FIELDSIZE];
+    private final Figure[][] field;
+    private final int fieldSize;
+
+    public Field(final int fieldSize) {
+        this.fieldSize = fieldSize;
+        field = new Figure[fieldSize][fieldSize];
+    }
+
 
     public int getSize() {
-        return FIELDSIZE;
+        return fieldSize;
     }
     public Figure getFigure(final Point point) throws InvalidPointException {
         if(checkCoordinate(point)) {
@@ -24,6 +30,6 @@ public class Field {
         field[point.x][point.y] = figure;
     }
     private boolean checkCoordinate(Point point) {
-        return point.x >= FIELDSIZE || point.x < MINCOORDINATE || point.y >= FIELDSIZE || point.y < MINCOORDINATE;
+        return point.x >= fieldSize || point.x < MINCOORDINATE || point.y >= fieldSize || point.y < MINCOORDINATE;
     }
 }
