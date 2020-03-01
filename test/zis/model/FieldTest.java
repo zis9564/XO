@@ -1,7 +1,6 @@
 package zis.model;
 
 import org.junit.Test;
-import zis.model.exceptions.AlreadyOccupiedException;
 import zis.model.exceptions.InvalidPointException;
 
 import java.awt.*;
@@ -13,14 +12,14 @@ public class FieldTest {
     @Test
     public void getSize() {
         final int expectedFieldSize = 3;
-        Field field = new Field();
+        final Field field = new Field(3);
         final int actualFieldSize = field.getSize();
         assertEquals(expectedFieldSize, actualFieldSize);
     }
 
     @Test
     public void setFigure() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(1, 1);
         final Figure inputFigure = Figure.X;
         field.setFigure(inputPoint, inputFigure);
@@ -29,7 +28,7 @@ public class FieldTest {
 
     @Test
     public void getFigureOfEmptyPoint() throws Exception {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point inputPoint = new Point(1, 1);
         final Figure actualFigure = field.getFigure(inputPoint);
         assertNull(actualFigure);
@@ -37,7 +36,7 @@ public class FieldTest {
 
     @Test
     public void getFigureWhenXLessThanZero() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point wrongXPoint = new Point(-1, 1);
         try{
             field.getFigure(wrongXPoint);
@@ -49,7 +48,7 @@ public class FieldTest {
 
     @Test
     public void getFigureWhenXMoreThanFieldSize() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point wrongXPoint = new Point(field.getSize(), 1);
         try {
             field.getFigure(wrongXPoint);
@@ -61,7 +60,7 @@ public class FieldTest {
 
     @Test
     public void getFigureWhenYLessThanZero() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point wrongYPoint = new Point(1, -1);
         try {
             field.getFigure(wrongYPoint);
@@ -73,7 +72,7 @@ public class FieldTest {
 
     @Test
     public void getFigureWhenYMoreThanFieldSize() {
-        final Field field = new Field();
+        final Field field = new Field(3);
         final Point wrongYPoint = new Point(1, field.getSize());
         try {
             field.getFigure(wrongYPoint);
