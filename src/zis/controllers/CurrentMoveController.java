@@ -10,8 +10,8 @@ public class CurrentMoveController {
 
     public Figure currentMove(final Field field) {
         int countFigure = 0;
-        for(int x = 0; x < field.getSize(); x++) {
-            countFigure += countFigureInTheRow(field, x);
+        for(int y = 0; y < field.getSize(); y++) {
+            countFigure += countFigureInTheRow(field, y);
         }
         if(countFigure == field.getSize() * field.getSize()) return null;
         if(countFigure % 2 == 0) return Figure.X;
